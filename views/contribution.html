@@ -1,0 +1,308 @@
+{{define "views/contribution.html"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>博客主页</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <!--webupload-->
+  <link rel="stylesheet" type="text/css" href="/relativepath/vendor/webuploader-0.1.5/webuploader.css">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="/relativepath/vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="/relativepath/vendor/font-awesome/css/font-awesome.min.css">
+  <!-- Custom icon font-->
+  <link rel="stylesheet" href="/relativepath/css/fontastic.css"> <!-- Google fonts - Open Sans-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <!-- Fancybox-->
+  <link rel="stylesheet" href="/relativepath/vendor/@fancyapps/fancybox/jquery.fancybox.min.css">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="/relativepath/css/style.default.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="/relativepath/css/custom.css"> <!-- Favicon-->
+  <link rel="shortcut icon" href="favicon.png">
+  <!-- Tweaks for older IEs-->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+  <header class="header">
+    <!-- Main Navbar-->
+    <nav class="navbar navbar-expand-lg">
+      <div class="search-area">
+        <div class="search-area-inner d-flex align-items-center justify-content-center">
+          <div class="close-btn"><i class="icon-close"></i></div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+              <form action="#">
+                <div class="form-group">
+                  <input type="search" name="search" id="search" placeholder="What are you looking for?">
+                  <button type="submit" class="submit"><i class="icon-search-1"></i></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <!-- Navbar Brand -->
+        <div class="navbar-header d-flex align-items-center justify-content-between">
+          <!-- Navbar Brand --><a href="/bloghome" class="navbar-brand">我的博客</a>
+          <!-- Toggle Button-->
+          <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse"
+            aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"><span></span><span></span><span></span></button>
+        </div>
+        <!-- Navbar Menu -->
+        <div id="navbarcollapse" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <!-- <li class="nav-item"><a href="index" class="nav-link ">Home</a> -->
+            </li>
+            <li class="nav-item"><a href="/bloghome" class="nav-link  ">博客</a>
+            </li>
+            <li class="nav-item"><a href="/contribution" class="nav-link active">贡献</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link ">联系</a>
+            </li>
+          </ul>
+          <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+          <!-- <ul class="langs navbar-text"><a href="#" class="active">EN</a><span> </span><a href="#">ES</a></ul> -->
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="row">
+      <!-- Latest Posts -->
+      <main class="posts-listing col-lg-12">
+        <div class="add-comment">
+          <header>
+            <h3 class="h6">发表文章</h3>
+          </header>
+          <form action="#" class="commenting-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <input type="text" name="username" id="title" placeholder="标题" class="form-control">
+              </div>
+{{/*              <div class="form-group col-md-6">*/}}
+{{/*                <input type="email" name="username" id="useremail"*/}}
+{{/*                       placeholder="Email Address (will not be published)" class="form-control">*/}}
+{{/*              </div>*/}}
+                <div class="form-group col-md-12">
+                    <div class="widget tags mb-0" style="padding:10px;border: none;">
+                    <ul class="list-inline">
+                        {{range .category_list}}
+                            <li class="list-inline-item"><a href="#"
+                                                            class="tag">{{.CategoryName}}</a>
+                            </li>
+                        {{end}}
+                    </ul>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                      <textarea name="summary" id="summary" placeholder="摘要"
+                                class="form-control"></textarea>
+              </div>
+              <div class="form-group col-md-12">
+                      <textarea name="content" id="content" placeholder="内容"
+                                class="form-control"style="height: 300px;" ></textarea>
+              </div>
+              <div class="form-group col-md-12">
+                 <button type="submit" class="btn btn-secondary">提交文章</button>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">
+                 文件上传
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- Page Footer-->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="logo">
+            <h6 class="text-white">zb Wu</h6>
+          </div>
+          <div class="contact-details">
+            <p>安徽 合肥</p>
+            <p>Phone: 18656009326</p>
+            <p>Email: <a href="mailto:info@company.com">18721601308@163.com</a></p>
+{{/*            <ul class="social-menu">*/}}
+{{/*              <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>*/}}
+{{/*              <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>*/}}
+{{/*              <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>*/}}
+{{/*              <li class="list-inline-item"><a href="#"><i class="fa fa-behance"></i></a></li>*/}}
+{{/*              <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>*/}}
+{{/*            </ul>*/}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="menus d-flex">
+            <ul class="list-unstyled">
+{{/*              <li> <a href="#">My Account</a></li>*/}}
+{{/*              <li> <a href="#">Add Listing</a></li>*/}}
+{{/*              <li> <a href="#">Pricing</a></li>*/}}
+{{/*              <li> <a href="#">Privacy &amp; Policy</a></li>*/}}
+            </ul>
+            <ul class="list-unstyled">
+{{/*              <li> <a href="#">Our Partners</a></li>*/}}
+{{/*              <li> <a href="#">FAQ</a></li>*/}}
+{{/*              <li> <a href="#">How It Works</a></li>*/}}
+{{/*              <li> <a href="#">Contact</a></li>*/}}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="latest-posts">
+            {{range .articleLatest_list}}
+              <a href="/article?article_id={{.ID}}">
+                <div class="post d-flex align-items-center">
+                  <div class="image"><img src="/relativepath/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title"><strong>{{.Title}}</strong>
+                    <span class="date last-meta">
+                    {{.CreateTime}}
+                  </span></div>
+                </div>
+              </a>
+            {{end}}
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyrights">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2020. zbWu All rights reserved. My great site.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- 文件上传Modal start-->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">文章上传</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Webupload widgt-->
+          <form action="">
+          <div id="uploader" class="wu-example">
+             <!--用来存放文件信息-->
+            <div id="thelist" class="uploader-list" name="f1" ></div>
+            <div class="btns">
+              <div id="picker">选择文件</div>
+            </div>
+          </div>
+          </form>
+          <!-- Webupload widgt-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button"  id="ctlBtn" class="btn btn-primary">开始上传</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 文件上传Modal end -->
+
+
+  <!-- JavaScript files-->
+  <script src="/relativepath/vendor/jquery/jquery.min.js"></script>
+  <script src="/relativepath/vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="/relativepath/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/relativepath/vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="/relativepath/vendor/@fancyapps/fancybox/jquery.fancybox.min.js"></script>
+  <script src="/relativepath/vendor/webuploader-0.1.5/webuploader.js"> </script>
+
+  <script>
+    var BASE_URL="/relativepath/vendor/webuploader-0.1.5"
+    var uploader = WebUploader.create({
+      // swf文件路径
+      swf: BASE_URL + '/Uploader.swf',
+      // 文件接收服务端。
+      server: '/contribution',
+      // 选择文件的按钮。可选。
+      // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+      pick: '#picker',
+      // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+      resize: false,
+      method: 'POST',
+      accept: {
+        title: 'Files',
+        extensions: 'gif,jpg,jpeg,bmp,png,pdf,doc,docx,txt,xls,xlsx,ppt,pptx,zip,mp3,mp4,text,csv,md',
+        mimeTypes: 'image/*,text/*'
+                //word
+                +',application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                //excel
+                +',application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                //ppt
+                +',application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                +',application/pdf'
+                +',application/zip'
+                +',application/csv'
+      }
+    })
+    $("#ctlBtn").on("click",function () {
+      uploader.upload()
+    })
+    $('#staticBackdrop').on('shown.bs.modal',function() {//提示框显示时候触发
+      uploader.refresh();   //刷新当前webUploder
+      // 当有文件被添加进队列的时候
+      uploader.on( 'fileQueued', function( file ) {
+        $list=$("#picker")
+        $list.append( '<div id="' + file.id + '" class="item">' +
+                '<h4 class="info">' + file.name + '</h4>' +
+                '<p class="state">等待上传...</p>' +
+                '</div>');
+      })
+      // 文件上传过程中创建进度条实时显示。
+      uploader.on( 'uploadProgress', function( file, percentage ) {
+        var $li = $( '#'+file.id ),
+                $percent = $li.find('.progress .progress-bar');
+        // 避免重复创建
+        if ( !$percent.length ) {
+          $percent = $('<div class="progress progress-striped active">' +
+                  '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+                  '</div>' +
+                  '</div>').appendTo( $li ).find('.progress-bar');
+        }
+        $li.find('p.state').text('上传中');
+        $percent.css( 'width', percentage * 100 + '%' );
+      })
+      uploader.on( 'uploadSuccess', function( file ) {
+        $( '#'+file.id ).find('p.state').text('已上传');
+      });
+
+      uploader.on( 'uploadError', function( file ) {
+        console.log(file);
+        $( '#'+file.id ).find('p.state').text('上传出错');
+      });
+
+      uploader.on( 'uploadComplete', function( file ) {
+        $( '#'+file.id ).find('.progress').fadeOut();
+      })
+    });
+
+
+
+
+  </script>
+</body>
+</html>
+{{end}}
