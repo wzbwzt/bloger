@@ -3,16 +3,18 @@ package main
 import (
 	"blog/controller"
 	"blog/dao/db"
+	"blog/middleWare/logger"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
-	dns := `root:123123@tcp(192.168.241.129:3306)/blogger?parseTime=true`
+	dns := `root:123123@tcp(10.4.7.129:3306)/blogger?parseTime=true`
 	err := db.Init(dns)
 	if err != nil {
 		panic(err)
 	}
+	r.Use(logger.LogWrite2File())
 	//加载静态文件
 	r.Static("/relativepath", "./static")
 	//加载资源图片
@@ -29,3 +31,4 @@ func main() {
 	r.Run(":8001")
 
 }
+

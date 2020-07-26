@@ -3,7 +3,6 @@ package controller
 import (
 	"blog/model"
 	"blog/service"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -50,6 +49,6 @@ func SearchKey(c *gin.Context){
 		c.JSON(http.StatusNotFound,gin.H{"error":err})
 		return
 	}
-	searchList, err := service.GetArticleBySearch(&searchStruct)
+	//searchList, err := service.GetArticleBySearch(&searchStruct)
 
 }

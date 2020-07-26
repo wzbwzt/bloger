@@ -58,4 +58,5 @@ func GetArticleByKey(key string ,pageNum int, pageSize int )(article []*model.Ar
 	from article where status=1 and title like "%?%" order by create_time desc limit ?,?`
 	err = DB.Select(&article, sqlStr, key, pageNum, pageSize)
 	return
+	
 }
